@@ -1,0 +1,63 @@
+﻿@model User
+<form method="get" action="UserProfileAfterUpdate" class="mt-5 w-50">
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success w-50">
+            @TempData["Success"]
+        </div>
+    }
+    <div class="mb-3 ">
+        <label for="InputID" class="form-label" hidden>ID</label>
+        <input type="text" class="form-control" hidden id="InputID" asp-for="Id" readonly>
+    </div>
+    <div class="mb-3">
+        <label for="InputName" class="form-label text-light">الاسم</label>
+        <input type="text" class="form-control" id="InputName" asp-for="Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3 ">
+        <label for="InputPassword" class="form-label" hidden>ID</label>
+        <input type="text" class="form-control" hidden id="InputID" asp-for="Password" readonly>
+    </div>
+    <div class="mb-3">
+        <label for="InputName" class="form-label text-light">البريد الالكتروني</label>
+        <input type="text" class="form-control" id="InputEmail" asp-for="Email">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="InputSSN" class="form-label text-light">الرقم القومي</label>
+        <input type="text" class="form-control" id="InputSSN" asp-for="SSN">
+        <span asp-validation-for="SSN" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="GovernorateId" class="form-label text-light">المحافظة</label>
+        <select class="form-select" asp-for="GovernorateId">
+            <option></option>
+            <option value="@Model.GovernorateId">@ViewBag.Governorate</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="VillageId" class="form-label text-light">القرية</label>
+        <select class="form-select" asp-for="VillageId">
+            <option></option>
+            <option value="@Model.VillageId">@ViewBag.Village</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="RegionId" class="form-label text-light">المنطقة</label>
+        <select class="form-select" asp-for="RegionId">
+            <option></option>
+            <option value="@Model.RegionId">@ViewBag.Region</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">حفظ</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        var gov = @Model.GovernorateId.ToString();
+    </script>
+    <script src="~/js/cascadingDropdownList.js" asp-append-version="true"></script>
+}

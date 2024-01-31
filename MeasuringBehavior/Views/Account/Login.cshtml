@@ -1,0 +1,27 @@
+﻿@model LoginVM
+<div class="row">
+    <div class="col-md-6">
+        <form id="registerForm" method="post"  action="Login">
+            <p class="text-danger">@ViewBag.Message</p>
+            <h2 class="text-light">استخدم حسابًا محليًا لتسجيل الدخول</h2>
+            <hr />
+            <div class="form-floating mb-3">
+                <input asp-for="Email" type="email" class="form-control" placeholder="ادخل البريد الالكتروني" />
+                <label asp-for="Email" >بريد إلكتروني</label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Password" type="password" class="form-control" placeholder="ادخل كلمة السر" />
+                <label asp-for="Password" >كلمة السر</label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <button id="loginSubmit" type="submit" class="w-100 btn btn-lg text-light btn-outline-secondary">تسجيل الدخول</button>
+        </form>
+        </div>
+    </div>
+
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+
+    }

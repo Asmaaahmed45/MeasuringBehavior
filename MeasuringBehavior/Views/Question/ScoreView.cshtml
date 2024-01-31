@@ -1,0 +1,13 @@
+﻿@model User
+<h6 class="text-light text-center">@Model.Name</h6>
+
+@if (ViewBag.Score != 0)
+{
+    <h1 class="text-light mt-2 text-center">درجاتك هي:@ViewBag.Score</h1>
+}
+@if(ViewBag.Score == 10)
+{
+    <h6 class="text-success mt-5 text-center">أنت سفير المناخ ونظرتك للكون تتغير</h6>
+}else{
+    <h6 class="text-success mt-5 text-center">أنت في حاجة إلى المزيد من الإطلاع عن ظاهرة تغير المناخ</h6>
+}

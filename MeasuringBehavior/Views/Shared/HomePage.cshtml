@@ -1,0 +1,9 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+    int id = int.Parse(HttpContextAccessor.HttpContext.Session.GetString("UserId"));
+}
+<a class="btn btn-success" href="/User/UserProfile?Id=@id" role="button">بروفايل</a>
+<br />
+<a class="btn btn-success mt-5"
+   onclick="if(localStorage.getItem('buttonDisable') === 'true') { window.location.href='/Account/Home'; } else { window.location.href='/Question/StartQuestions'; }"
+   role="button">الاسئلة</a>

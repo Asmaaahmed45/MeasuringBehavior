@@ -1,0 +1,62 @@
+﻿@model QuestionVM
+<head>
+    <link rel="stylesheet" href="~/css/CardQuestionStyle.css" />
+</head>
+
+@foreach (var question in Model.Questions)
+{
+    <div class="container mt-sm-5 my-1">
+        <div class="question ml-sm-5 pl-sm-5 pt-2">
+            <div class="py-2 h5"><b>@question.Name</b></div>
+            <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                @for (int i = 0; i < @question.Choices.Count(); i++)
+                {
+                    <label class="options">
+                        @question.Choices[i].choice
+                        <input type="radio" name="radio" value="@question.Choices[i].ChoiceId">
+                        <span class="checkmark"></span>
+                    </label>
+                }
+            </div>
+        </div>
+    </div>
+}
+<nav aria-label="..." class="navbar-dark bg-dark w-25">
+    <ul class="pagination w-25">
+        @if (Model.CurrentPage > 1)
+        {
+            <li class="page-item " style="background-color:green; ">
+                <a class="page-link " onclick="saveSelectedValue('@Model.CurrentPage.ToString()')" href="/Question/GetQuestions?currentPage=@(Model.CurrentPage-1)" tabindex="-1" aria-disabled="true">السابق</a>
+            </li>
+
+        }
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            if (i == Model.CurrentPage)
+            {
+                <li class="page-item active"><a class="page-link" onclick="saveSelectedValue('@Model.CurrentPage.ToString()')" href="/Question/GetQuestions?currentPage=@i">@i</a></li>
+            }
+            else
+            {
+                <li class="page-item"><a class="page-link" onclick="saveSelectedValue('@Model.CurrentPage.ToString()')" href="/Question/GetQuestions?currentPage=@i">@i</a></li>
+            }
+        }
+        @if (Model.CurrentPage < Model.TotalPages)
+        {
+            <li class="page-item">
+                <a class="page-link" style=" color:gainsboro" onclick="saveSelectedValue('@Model.CurrentPage.ToString()')" href="/Question/GetQuestions?currentPage=@(Model.CurrentPage+1)">التالي</a>
+            </li>
+
+        }
+    </ul>
+</nav>
+@if (Model.CurrentPage == 11)
+{
+    <a class="btn btn-outline-success" onclick="SendPostRequest();DisableQuestionsBtn();">انهاء</a>
+}
+@section Scripts{
+    <script>
+        var currentPage = '@Model.CurrentPage.ToString()';
+    </script>
+     <script src="~/js/test.js" asp-append-version="true"></script> 
+}

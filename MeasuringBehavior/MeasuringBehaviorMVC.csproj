@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MeasuringBehavior.Core\MeasuringBehavior.Core.csproj" />
+    <ProjectReference Include="..\MeasuringBehavior.EF\MeasuringBehavior.EF.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\ENG Asmaa\source\repos\MeasuringBehavior\MeasuringBehavior\Controllers\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\ENG Asmaa\source\repos\MeasuringBehavior\MeasuringBehavior\Controllers\.editorconfig" />
+    <None Include="wwwroot\css\CardQuestionStyle.css" />
+  </ItemGroup>
+
+</Project>

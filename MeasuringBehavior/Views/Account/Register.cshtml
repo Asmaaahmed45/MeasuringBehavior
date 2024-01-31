@@ -1,0 +1,44 @@
+﻿@model RegisterVM
+<div class="row">
+        <form id="registerForm" method="post" action="Register">
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success w-50">
+                    <strong>تم انشاء الحساب بنجاح</strong>  @TempData["Success"]
+                </div>
+            }
+            <h2 class="text-light">قم بالتسجيل لإنشاء حساب جديد</h2>
+            <hr />
+            <div class="col-md-6">
+            <p class="text-danger">@ViewBag.Message</p>
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Name" type="text" class="form-control" placeholder="ادخل الاسم" />
+                <label asp-for="Name">الاسم</label>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Email" type="email" class="form-control" placeholder="ادخل البريد الالكتروني" />
+                <label asp-for="Email">بريد إلكتروني</label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Password" type="password" class="form-control"  placeholder="ادخل كلمة السر" />
+                <label asp-for="Password">كلمة السر</label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="ConfirmPassword" type="password" class="form-control"  placeholder="password" />
+                <label asp-for="ConfirmPassword">تأكيد كلمة السر</label>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg text-light btn-outline-secondary">انشاء الحساب</button>
+            </div>
+        </form>
+ </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+     
+
+}
